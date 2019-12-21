@@ -3,12 +3,32 @@ import React, { Component } from "react";
 export default class Signup extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    error: ""
   };
 
-  handleSubmit = () => {};
+  handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .post("/api/signup")
+      .then(res => {
+        if (res.message) {
+          this.setState({
+            error: res.message
+          });
+        }
+        return res.data;
+      })
+      .catch(err => {
+        return err.response.data;
+      });
+  };
 
-  handleChange = () => {};
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   render() {
     return (
