@@ -2,7 +2,7 @@ import axios from "axios";
 
 const login = (username, password) => {
   return axios
-    .post("/api/auth/login", {
+    .post("/api/login", {
       username: username,
       password: password
     })
@@ -28,4 +28,8 @@ const signup = (username, password) => {
     });
 };
 
-export {signup, login}
+const logout = () => {
+  axios.delete("/api/logout")
+}
+
+export {signup, login, logout}

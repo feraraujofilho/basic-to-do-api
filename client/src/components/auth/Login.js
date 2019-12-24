@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { login } from "../../services/user";
 import { Alert } from "./styles";
-import { login } from "../../services/user";
 
 class Login extends Component {
   state = {
@@ -25,19 +24,19 @@ class Login extends Component {
           error: data.message
         });
       } else {
-        this.props.props.setUser(data);
-        this.props.props.history.push("/");
+        this.props.setUser(data);
+        this.props.history.push("/");
       }
     });
   };
 
   render() {
     return (
-      <div className="authContainer login">
+      <div>
         <form onSubmit={this.handleSubmit}>
           <h2>LOGIN</h2>
           <div>
-            <label htmlFor="username" className="inp">
+            <label htmlFor="username" >
               <input
                 type="text"
                 name="username"
@@ -46,8 +45,8 @@ class Login extends Component {
                 onChange={this.handleChange}
                 placeholder="&nbsp;"
               />
-              <span className="label">USERNAME</span>
-              <span className="border"></span>
+              <span >USERNAME</span>
+              <span ></span>
             </label>
           </div>
           <div>
