@@ -6,16 +6,23 @@ export default class Navbar extends Component {
 
   handleLogout = () => {
     logout()
+    this.props.clearUser(null)
   };
 
   render() {
     return (
       <div>
-        <Link to="/" onClick={this.handleLogout}>
-          Logout
-        </Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/login">Login</Link>
+        {this.props.user ? (
+          <Link to="/" onClick={this.handleLogout}>
+            Logout
+          </Link>
+        ) : (
+          <>
+            {" "}
+            <Link to="/signup">Signup</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
       </div>
     );
   }

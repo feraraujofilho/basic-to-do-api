@@ -5,8 +5,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
+
 const passport = require("passport");
 
 require("./config/passport");
@@ -48,7 +50,8 @@ app.use(
   session({
     secret: "keyboard cat",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 

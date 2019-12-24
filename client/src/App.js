@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello</h1>
-        <Navbar></Navbar>
+        <Navbar user={this.state.user} clearUser={this.setUser}/>
         <Route
           exact
           path="/signup"

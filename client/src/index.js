@@ -6,17 +6,18 @@ import * as serviceWorker from './serviceWorker';
 import axios from "axios"
 import {BrowserRouter} from "react-router-dom"
 
-/* axios.get("/api/loggedind").then(res => {
-    const user = res.data; */
+ axios.get("/api/loggedin").then(res => {
+    const user = res.data; 
 
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App /* user={user} */ />
-  </BrowserRouter>,
+  ReactDOM.render(
+    <BrowserRouter>
+      <App user={user} />
+    </BrowserRouter>,
   document.getElementById("root")
 );
 
+})
 
 
 
