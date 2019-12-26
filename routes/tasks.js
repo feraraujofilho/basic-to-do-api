@@ -13,6 +13,7 @@ router.get("/tasks", async (req, res, next) => {
 });
 
 router.post("/tasks/create", async (req, res, next) => {
+
   if (!req.user) {
     return res.json({
       message: "sorry, you must be logged in to create a task"
@@ -30,6 +31,17 @@ router.post("/tasks/create", async (req, res, next) => {
     res.json(err);
   }
 });
+
+router.get("/tasks/:id", (req,res) => {
+  const id = req.params.id
+
+  Task.findById(id).then(task =>{
+    res.json(task)
+  }).catch(err => {
+    res.status(500).json(err);
+  })
+
+})
 
 router.post("/tasks/edit/:id", async (req, res, next) => {
   try {
