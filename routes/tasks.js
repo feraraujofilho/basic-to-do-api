@@ -45,7 +45,10 @@ router.get("/tasks/:id", (req,res) => {
 
 router.post("/tasks/edit/:id", async (req, res, next) => {
   try {
-    const task = await Task.findByIdAndUpdate(req.params.id, req.body);
+    console.log("REQQQQ!!", req.body)
+    const task = await Task.findByIdAndUpdate(req.params.id, {
+      title: req.body.title,
+      description: req.body.description});
 
     res.json(task);
   } catch (err) {
@@ -53,7 +56,7 @@ router.post("/tasks/edit/:id", async (req, res, next) => {
   }
 });
 
-router.post("/tasks/delete/:id", async (req, res, next) => {
+router.delete("/tasks/delete/:id", async (req, res, next) => {
   try {
     const task = await Task.findByIdAndRemove(req.params.id);
 

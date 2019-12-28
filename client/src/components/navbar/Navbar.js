@@ -13,9 +13,13 @@ export default class Navbar extends Component {
     return (
       <div>
         {this.props.user ? (
+          <>
           <Link to="/" onClick={this.handleLogout}>
             Logout
           </Link>
+          <Link to="/tasks">Tasks</Link>
+          <Link to="/newtask">New Task</Link>
+          </>
         ) : (
           <>
             {" "}
